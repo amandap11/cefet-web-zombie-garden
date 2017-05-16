@@ -3,7 +3,7 @@ var connection = mysql.createConnection({
   host: 'localhost',
   database: 'zombies',
   user: 'root',
-  password: 'oivalf',
+  password: '123456',
   multipleStatements: true
 });
 
