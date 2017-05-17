@@ -67,21 +67,12 @@ router.get('/new/', function(req, res) {
 //      - Em caso de erro do INSERT, colocar mensagem vermelhinha
 router.post('/', function(req, res) {
   var name = db.escape(req.body.name);
-  //console.log(id);
   var query = 'INSERT INTO person (id, name, alive, eatenBy) VALUES (NULL, ' + name + ', 1, NULL)';
   db.query(query, function(err, result) {
     if (err)  { res.send(401, 'Pessoa invalida'); }
     else      { res.redirect('/people/'); }
   });
-  //res.render('listPeople');
 });
-/*db.query('INSERT INTO person (id, name) VALUES (NULL, "Tea")',
-  function(err, result) {
-    console.log('Number of food added: ' +
-                 result.affectedRows +
-                 ' with id = ' + result.insertId);
-  }
-);*/
 
 /* DELETE uma pessoa */
 // Exercício 2: IMPLEMENTAR AQUI
@@ -92,7 +83,6 @@ router.post('/', function(req, res) {
 //      - Em caso de erro do DELETE, colocar mensagem vermelhinha
 router.delete('/:id', function(req, res) {
   var id = db.escape(req.params.id);
-  //console.log(id);
   var query = 'DELETE FROM person WHERE id = ' + id;
   db.query(query, function(err, result) {
     if (err) { 
@@ -101,7 +91,6 @@ router.delete('/:id', function(req, res) {
       res.redirect('/people/'); 
     }
   });
-  //res.render('listPeople');
 });
 
 module.exports = router;
